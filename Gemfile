@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# devise helps with user authentication and authorization
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,6 +38,21 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # better errors in front end to help with debugging
+  gem "better_errors"
+
+  # rspec helps writing test in rails application (will not use the default builtin Minitest)
+  gem 'rspec-rails', '~> 3.4'
+
+  # factory girl is a fixture (minitest) replacement
+  gem 'factory_girl_rails'
+
+  # Capybara works with rspec to write feature/integration test
+  gem 'capybara'
+
+  # cleans up test database and avoid conflict with capybara when thread connection isn't shared
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -44,4 +62,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
