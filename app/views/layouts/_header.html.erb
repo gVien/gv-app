@@ -18,8 +18,16 @@
         <li><%= link_to "Update Profile", edit_user_registration_path %></li>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-        <li><%= link_to "Log in", new_user_session_path %></li>
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to new_user_session_path do %>
+          <span class="glyphicon glyphicon-user"></span>
+          Log In
+          <% end %>
+        </li>
+        <li><%= link_to new_user_registration_path do %>
+          <span class="glyphicon glyphicon-log-in"></span>
+          Sign Up
+          <% end %>
+        </li>
         <% end %>
       </ul>
     </div>  <!-- /.collapse -->
