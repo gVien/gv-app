@@ -4,6 +4,7 @@ class LoanApplicationsController < ApplicationController
   end
 
   def new
+    @loan_app = current_user.loan_applications.build
   end
 
   def create
