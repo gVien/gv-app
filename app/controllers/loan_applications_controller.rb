@@ -1,8 +1,12 @@
 class LoanApplicationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @loan_apps = current_user.loan_applications
+    if current_user
+      @loan_apps = current_user.loan_applications
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def new
