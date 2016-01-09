@@ -7,14 +7,7 @@
     <div id="loan-form-modal" class="modal fade" role="dialog"></div>
 
     <div class="loan-apps-listing">
-      <h3>Your Loan Application Lists</h3>
-      <% @loan_apps.each do |loan_app| %>
-        <div class="well col-md-12 custom-color">
-          <div class="col-md-4 loan-info">Amount: $<%= loan_app.amount %></div>
-          <div class="col-md-4 loan-info">Down Payment: $<%= loan_app.down_payment %></div>
-          <div class="col-md-4 loan-info">Interest: <%= loan_app.interest %>%</div>
-        </div>
-      <% end %>
+      <%= render "loan_info" %>
     </div>
   </div>
 </div>
