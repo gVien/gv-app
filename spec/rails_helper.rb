@@ -29,6 +29,11 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
+  # configurating Devise gem test helpers to use their builtin methods
+  # also see http://stackoverflow.com/questions/32611859/how-to-write-an-rspec-controller-test-with-authentication
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
