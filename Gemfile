@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # devise helps with user authentication and authorization
 gem 'devise'
 
+# prawn is a pure Ruby PDF generation library. Using this to generate loan info into pdf
+gem 'prawn', '~> 2.0', '>= 2.0.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
