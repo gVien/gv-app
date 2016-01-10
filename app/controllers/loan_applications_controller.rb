@@ -1,5 +1,5 @@
 class LoanApplicationsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:show, :new , :create]
 
   def index
     if current_user
