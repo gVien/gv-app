@@ -31,6 +31,10 @@ gem 'devise'
 # prawn is a pure Ruby PDF generation library. Using this to generate loan info into pdf
 gem 'prawn', '~> 2.0', '>= 2.0.2'
 
+# prawn separated table features into a separate gem
+# see http://stackoverflow.com/questions/24455356/rails-prawn-undefined-method-table-for-prawndocument0x007fda2d594a98
+gem "prawn-table"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
