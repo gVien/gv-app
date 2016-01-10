@@ -14,8 +14,7 @@ class LoanApplicationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = LoanApplicationPdf.new
-        pdf.text "Amount: $#{loan_app.amount} \n Down Payment: $#{loan_app.down_payment} \n Interest: #{loan_app.interest}%"
+        pdf = LoanApplicationPdf.new(loan_app)
         # disposition renders from the browser and not download
         send_data pdf.render, filename: "loan_application_#{loan_app.id}.pdf",
                               type: "application/pdf",
