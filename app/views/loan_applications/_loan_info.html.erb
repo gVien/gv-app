@@ -1,8 +1,9 @@
 <h3>Your Loan Application Lists</h3>
 <% @loan_apps.each do |loan_app| %>
   <div class="well col-md-12 custom-color">
-    <div class="col-md-4 loan-info">Amount: $<%= loan_app.amount %></div>
-    <div class="col-md-4 loan-info">Down Payment: $<%= loan_app.down_payment %></div>
-    <div class="col-md-4 loan-info">Interest: <%= loan_app.interest %>%</div>
+    <div class="col-md-3 loan-info">Amount: $<%= loan_app.amount %></div>
+    <div class="col-md-3 loan-info">Down Payment: $<%= loan_app.down_payment %></div>
+    <div class="col-md-3 loan-info">Interest: <%= loan_app.interest %>%</div>
+    <div class="col-md-3 pdf-link"><%= link_to "View PDF", loan_application_path(loan_app, format: "pdf"),  class: "btn btn-primary", target: "_blank"  %></div>
   </div>
 <% end %>

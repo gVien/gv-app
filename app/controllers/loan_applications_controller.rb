@@ -9,6 +9,21 @@ class LoanApplicationsController < ApplicationController
     end
   end
 
+  def show
+    loan_app = current_user.loan_applications.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = LoanApplicationPdf.new
+        pdf.text "Amount: $#{loan_app.amount} \n Down Payment: $#{loan_app.down_payment} \n Interest: #{loan_app.interest}%"
+        # disposition renders from the browser and not download
+        send_data pdf.render, filename: "loan_application_#{loan_app.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
+  end
+
   def new
     @loan_app = current_user.loan_applications.build
   end
