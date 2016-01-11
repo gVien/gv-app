@@ -14,3 +14,6 @@
 
 # Ignore .env file
 .env
+
+# Ignore Rails root path from Paperclip
+/loan_applications/
