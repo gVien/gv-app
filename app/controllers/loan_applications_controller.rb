@@ -12,7 +12,7 @@ class LoanApplicationsController < ApplicationController
   def show
     @loan_app = current_user.loan_applications.find(params[:id])
     respond_to do |format|
-      format.html { redirect_to @loan_app } # if js is disabled on a browser
+      format.html { redirect_to loan_application_path(@loan_app, format: "pdf") } # if js is disabled on a browser, download pdf
       format.js   # in case mobile does not respond
       format.pdf do
         pdf = LoanApplicationPdf.new(@loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
