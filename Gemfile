@@ -71,6 +71,12 @@ group :development, :test do
 
   # dot env for storing ENV variables (e.g. consumer key, access token, etc)
   gem 'dotenv-rails'
+
+  # guard runs the test in the background so you don't have to type `be rspec spec` everytime
+  gem 'guard-rspec', require: false
+
+  # for OS/X only, waits for file changes from the Mac OS/X FSEvents API instead of polling the disk for changes.
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do
