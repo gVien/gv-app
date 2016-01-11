@@ -15,7 +15,8 @@ class LoanApplicationPdf < Prawn::Document
   def line_items
     move_down 15
     table line_items_rows do
-      row(0).front_style = :bold
+      row(0).font_style = :bold
+      row(0).background_color = "40B173"
       row(1).align = :right
     end
     loan_payment
