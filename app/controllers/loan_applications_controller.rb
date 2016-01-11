@@ -14,7 +14,7 @@ class LoanApplicationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = LoanApplicationPdf.new(loan_app)
+        pdf = LoanApplicationPdf.new(loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
         # disposition renders from the browser and not download
         send_data pdf.render, filename: "loan_application_#{loan_app.id}.pdf",
                               type: "application/pdf",
