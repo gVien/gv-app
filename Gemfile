@@ -35,6 +35,12 @@ gem 'prawn', '~> 2.0', '>= 2.0.2'
 # see http://stackoverflow.com/questions/24455356/rails-prawn-undefined-method-table-for-prawndocument0x007fda2d594a98
 gem "prawn-table"
 
+# paperclip makes file upload easier, can be used with s3 or other cloud storage solution
+gem "paperclip", "~> 4.3"
+
+# gem to use with S3 storage
+gem 'aws-sdk', '~> 1.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
