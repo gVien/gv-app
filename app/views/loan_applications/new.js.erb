@@ -2,3 +2,9 @@
 // https://richonrails.com/articles/basic-ajax-in-ruby-on-rails
 $("#loan-form-modal").html("<%= escape_javascript(render 'form_modal') %>")
 $("#loan-form-modal").modal("show")
+
+// more ajax options here, can also use ajaxStart
+// http://code.tutsplus.com/tutorials/using-unobtrusive-javascript-and-ajax-with-rails-3--net-15243
+$('#loan-form-modal').bind('ajax:before', function() {
+    $('.ajax-loader').removeClass("hide")
+});

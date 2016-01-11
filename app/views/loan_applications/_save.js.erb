@@ -5,6 +5,7 @@ $("ul.errors").html("") //clear the errors dialog in the modal
     // it's used to render the html tags of message
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
   <% end %>
+  $(".ajax-loader").addClass("hide")
 <% else %>  //if no errors found, render the index (root) of application & hide the modal
   $(".loan-apps-listing").html("<%= escape_javascript(render 'loan_info') %>")
   $("#loan-form-modal").modal("hide")
