@@ -15,6 +15,7 @@ class LoanApplicationsController < ApplicationController
       format.html
       format.pdf do
         pdf = LoanApplicationPdf.new(loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
+        p view_context
         # disposition renders from the browser and not download
         send_data pdf.render, filename: "loan_application_#{loan_app.id}.pdf",
                               type: "application/pdf",
@@ -30,7 +31,8 @@ class LoanApplicationsController < ApplicationController
   def create
     @loan_app = current_user.loan_applications.create(loan_params)  # ajax will take care of displaying the errors
     @loan_apps = current_user.loan_applications   # for ajax to render all loan apps
-    generate_pdf(@loan_app)
+    pdf = LoanApplicationPdf.new(@loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
+    @loan_app.generate(pdf)
 
     # this works without Ajax but combining the two creates incompatibility (will fix this sometime later)
     # remember to set `config.action_view.embed_authenticity_token_in_remote_forms = true` in the application.rb in config folder to allow people with no JS (e.g. noscript in Firefox) to use form
