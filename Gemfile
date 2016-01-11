@@ -68,6 +68,9 @@ group :development, :test do
 
   # cleans up test database and avoid conflict with capybara when thread connection isn't shared
   gem 'database_cleaner'
+
+  # dot env for storing ENV variables (e.g. consumer key, access token, etc)
+  gem 'dotenv-rails'
 end
 
 group :development do
