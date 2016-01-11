@@ -1,11 +1,25 @@
 class LoanApplicationsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:show, :new , :create]
 
   def index
     if current_user
       @loan_apps = current_user.loan_applications
     else
       redirect_to new_user_session_path
+    end
+  end
+
+  def show
+    loan_app = current_user.loan_applications.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = LoanApplicationPdf.new(loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
+        # disposition renders from the browser and not download
+        send_data pdf.render, filename: "loan_application_#{loan_app.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
