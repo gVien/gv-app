@@ -17,4 +17,15 @@ module SessionHelpers
     # apparently, there are 2 "Log In" in main page which confuses Capybara (!!!)
     page.find('.btn.btn-primary').click
   end
+
+  def sign_up_user( options = {} )
+    email = options.fetch(:email, "new@user.com")   # or email || some_default_email
+    password = options.fetch(:password, "12345678")
+    password_confirmation = options.fetch(:password_confirmation, "12345678")
+    visit new_user_registration_path
+    fill_in "Email", with: email
+    fill_in "Password", with: password
+    fill_in "Password confirmation", with: password_confirmation
+    page.find('.btn.btn-primary').click
+  end
 end
