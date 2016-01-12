@@ -41,5 +41,10 @@ RSpec.describe LoanApplication, type: :model do
         expect(loan).to_not be_valid
       end
     end
+
+    it "is invalid when user_id is not present" do
+      loan.user_id = nil
+      expect(loan).to_not be_valid
+    end
   end
 end

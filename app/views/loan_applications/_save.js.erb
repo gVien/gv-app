@@ -1,5 +1,6 @@
 $("ul.errors").html("") //clear the errors dialog in the modal
 <% if @loan_app.errors.any? %>
+  $("ul.errors").html("<p>You have <%= @loan_app.errors.count %> that prevent you from creating a new loan</p>")
   <% @loan_app.errors.full_messages.each do |message| %>
     // `raw` can be used in placed of `html_safe` (raw uses html_safe behind the scence with `to_s` method)
     // it's used to render the html tags of message
