@@ -5,6 +5,11 @@ $("#loan-form-modal").modal("show")
 
 // more ajax options here, can also use ajaxStart
 // http://code.tutsplus.com/tutorials/using-unobtrusive-javascript-and-ajax-with-rails-3--net-15243
+// APPRENTLY, THE BIND METHOD GIVES 500 ERROR IN PRODUCTION, BUT IT WORKS FLAWLESSLY IN DEVELOPMENT
 // $('#loan-form-modal').bind('ajax:before', function() {
 //     $('.ajax-loader').removeClass("hide")
 // });
+
+$(document).ajaxStart(function() {
+        $(".ajax-loader").removeClass("hide")
+    })
