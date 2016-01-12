@@ -22,6 +22,8 @@ RSpec.describe LoanApplicationsController, type: :controller do
       end
     end
 
+    # Got these errors: `Error: Permission denied @ dir_s_mkdir - /loan_applications`
+    # see http://stackoverflow.com/questions/11864175/paperclip-errnoeacces-permission-denied-system
     describe "create loan application with Ajax" do
       it "should increment the loan application count" do
         # post :create, loan_application: attributes_for(:loan_application) # can't do this since it's an ajax call

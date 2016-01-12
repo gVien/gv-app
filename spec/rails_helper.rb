@@ -5,6 +5,9 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rspec'
+require "support/session_helpers"
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -33,6 +36,7 @@ RSpec.configure do |config|
   # also see http://stackoverflow.com/questions/32611859/how-to-write-an-rspec-controller-test-with-authentication
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
+  config.include SessionHelpers, type: :feature
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -4,6 +4,6 @@
     <div class="col-md-3 loan-info">Amount: $<%= loan_app.amount %></div>
     <div class="col-md-3 loan-info">Down Payment: $<%= loan_app.down_payment %></div>
     <div class="col-md-3 loan-info">Interest: <%= loan_app.interest %>%</div>
-    <div class="col-md-3 pdf-link"><%= link_to "View PDF", loan_application_path(loan_app, format: "pdf"),  class: "btn btn-primary", target: "_blank"  %></div>
+    <div class="col-md-3 pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-primary" %></div>
   </div>
 <% end %>

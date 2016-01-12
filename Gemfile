@@ -35,6 +35,12 @@ gem 'prawn', '~> 2.0', '>= 2.0.2'
 # see http://stackoverflow.com/questions/24455356/rails-prawn-undefined-method-table-for-prawndocument0x007fda2d594a98
 gem "prawn-table"
 
+# paperclip makes file upload easier, can be used with s3 or other cloud storage solution
+gem "paperclip", "~> 4.3"
+
+# gem to use with S3 storage
+gem 'aws-sdk', '~> 1.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -62,6 +68,15 @@ group :development, :test do
 
   # cleans up test database and avoid conflict with capybara when thread connection isn't shared
   gem 'database_cleaner'
+
+  # dot env for storing ENV variables (e.g. consumer key, access token, etc)
+  gem 'dotenv-rails'
+
+  # guard runs the test in the background so you don't have to type `be rspec spec` everytime
+  gem 'guard-rspec', require: false
+
+  # for OS/X only, waits for file changes from the Mac OS/X FSEvents API instead of polling the disk for changes.
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do

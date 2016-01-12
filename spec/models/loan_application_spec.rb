@@ -18,35 +18,28 @@ RSpec.describe LoanApplication, type: :model do
       expect(loan).to be_valid
     end
 
-    it "is invalid without amount" do
-      loan.amount = nil
-      expect(loan).to_not be_valid
+    it "is invalid when AMOUNT is nil, 0, or negative float number" do
+      invalid_params = [0, nil, -10]
+      invalid_params.each do |invalid_param|
+        loan.amount = invalid_param
+        expect(loan).to_not be_valid
+      end
     end
 
-    it "is invalid when amount is negative integer" do
-      loan.amount = -10
-      expect(loan).to_not be_valid
+    it "is invalid when DOWN_PAYMENT is nil, 0, or negative float number" do
+      invalid_params = [0, nil, -10_000]
+      invalid_params.each do |invalid_param|
+        loan.down_payment = invalid_param
+        expect(loan).to_not be_valid
+      end
     end
 
-    it "is invalid without down_payment" do
-      loan.down_payment = nil
-      expect(loan).to_not be_valid
+    it "is invalid when INTEREST RATE is nil, 0, or negative float number" do
+      invalid_params = [0, nil, -1.5]
+      invalid_params.each do |invalid_param|
+        loan.interest = invalid_param
+        expect(loan).to_not be_valid
+      end
     end
-
-    it "is invalid when down_payment is negative integer" do
-      loan.down_payment = -10_000
-      expect(loan).to_not be_valid
-    end
-
-    it "is invalid without interest" do
-      loan.interest = nil
-      expect(loan).to_not be_valid
-    end
-
-    it "is invalid when interest is negative float number" do
-      loan.interest = -1.5
-      expect(loan).to_not be_valid
-    end
-
   end
 end

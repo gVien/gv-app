@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+
+    <!-- Modal head -->
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <!-- Modal Body (pdf) -->
+      <div class="modal-body">
+        <object data="<%= @loan_app.document.url %>" type="application/pdf" style="height:650px; width: 100%;">
+            <embed src="<%= @loan_app.document.url %>" type="application/pdf" />
+            <p>It appears you do not have the PDF plugin for your browser, no problem! You can download your loan application, <%= link_to "here", loan_application_path(@loan_app, format: "pdf") %></p>
+        </object>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Cancel", root_path, class: "btn", data: {dismiss: "modal"} %>
+      </div>
+  </div>
+</div>
