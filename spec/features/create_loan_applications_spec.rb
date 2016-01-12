@@ -12,7 +12,7 @@ RSpec.feature "CreateLoanApplications", type: :feature do
   # a user can create a new loan application by clicking on "Apply for a New Loan" link
   # a user does not filled out the form and click "Process My Loan" link inside the modal
   # verify that the errors messages display inside the modal
-  scenario "a user apply for an invalid loans" do
+  scenario "a user apply for an invalid loans", js: true do
     sign_in_default_user                # support/session_helpers.rb
     click_link "Apply for a New Loan"
     click_button "Process My Loan"
@@ -21,6 +21,7 @@ RSpec.feature "CreateLoanApplications", type: :feature do
     expect(page).to have_content("Down payment can't be blank")
     expect(page).to have_content("Down payment is not a number")
     expect(page).to have_content("Interest can't be blank")
+    expect(page).to have_content("Interest is not a number")
   end
 
   # scenario 2: a user apply for an VALID loans and can view new loan
@@ -30,11 +31,7 @@ RSpec.feature "CreateLoanApplications", type: :feature do
   # click "Process My Loan" link inside the modal
   # verify THERE ARE NO errors messages inside the modal
   # verify the modal disappears (`display: none` in the modal)
-  # verify a new loan app is on the index page (look for "/loan_applications/:id" on the page)
-  # click on "View PDF"
-  # verify the pdf modal `display` type is set to `block`
-  # verify Amazon Web Services link is inside the modal body
-  scenario "a user apply for a VALID loan" do
+  scenario "a user apply for a VALID loan", js: true do
     user = FactoryGirl.create(:user)
     sign_in_with(user.email, user.password)            # support/session_helpers.rb
     click_link "Apply for a New Loan"
@@ -44,7 +41,7 @@ RSpec.feature "CreateLoanApplications", type: :feature do
     click_button "Process My Loan"
     expect(page).to have_content("Amount: $123456")
     expect(page).to have_content("Down Payment: $1234")
-    expect(page).to have_content("Interest: 5%")
+    expect(page).to have_content("Interest: 5.0%")
     expect(page).to have_content("View PDF")
   end
 
