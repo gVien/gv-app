@@ -102,10 +102,34 @@ sup {
 
 /* Loan Applications */
 .loan-apps-listing {
-  .custom-color {
+  .loan-content {
+    margin-right: 25px;
+    margin-left: 25px;
     .loan-info {
       font-size: 1.2em;
+      margin-bottom: 10px;
+      position: relative;
+/*      .loan-attr {
+        position: absolute;
+        left: 0;
+      }*/
+      .loan-val {
+        position: absolute;
+        right: 0;
+      }
+/*      .pdf-link {
+        a.btn.btn-primary {
+          width: 100% !important;
+        }
+      }*/
     }
+  }
+}
+
+/* overwrite Bootstrap */
+.pdf-link {
+  a.btn.btn-primary {
+    width: 100%;
   }
 }
 

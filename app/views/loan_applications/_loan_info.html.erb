@@ -1,9 +1,20 @@
-<h3>Your Loan Application Lists</h3>
+<% unless @loan_apps.empty? %>
+  <h3>Your Loan Application Lists</h3>
+<% end %>
 <% @loan_apps.each do |loan_app| %>
-  <div class="well col-md-12 custom-color">
-    <div class="col-md-3 loan-info">Amount: $<%= loan_app.amount %></div>
-    <div class="col-md-3 loan-info">Down Payment: $<%= loan_app.down_payment %></div>
-    <div class="col-md-3 loan-info">Interest: <%= loan_app.interest %>%</div>
-    <div class="col-md-3 pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-primary", id: "loanpdf" %></div>
+  <div class="well well-lg col-md-3 loan-content">
+    <div class="loan-info">
+      <span class="loan-attr"> Doc ID: </span> <span class="loan-val"><%= loan_app.id %></span>
+    </div>
+    <div class="loan-info">
+      <span class="loan-attr">Amount: </span> <span class="loan-val">$<%= loan_app.amount %></span>
+    </div>
+    <div class="loan-info">
+      <span class="loan-attr">Down Payment: </span> <span class="loan-val">$<%= loan_app.down_payment %></span>
+    </div>
+    <div class="loan-info">
+      <span class="loan-attr">Interest: </span> <span class="loan-val"><%= loan_app.interest %>%</span>
+    </div>
+    <div class="pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-primary", id: "loanpdf" %></div>
   </div>
 <% end %>
