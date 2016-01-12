@@ -74,9 +74,11 @@ group :development, :test do
 
   # guard runs the test in the background so you don't have to type `be rspec spec` everytime
   gem 'guard-rspec', require: false
+end
 
+group :test, :darwin do
   # for OS/X only, waits for file changes from the Mac OS/X FSEvents API instead of polling the disk for changes.
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'rb-fsevent'
 end
 
 group :development do
