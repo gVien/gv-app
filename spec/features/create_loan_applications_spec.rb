@@ -50,14 +50,23 @@ RSpec.feature "CreateLoanApplications", type: :feature do
   # log in as User A
   # verify the loan app info is exists in User A page
   # verify the loan app info of User B is not on the page
-  # before do
-  #   user_a = User.create(email: "userA@user.com", password: "12345678", password_confirmation: "12345678")
-  #   loan_from_user_a = user_a.loan_applications.create(amount: 10_000, down_payment: 2_000, interest: 10)
-  #   user_b = User.create(email: "userB@user.com", password: "12345678", password_confirmation: "12345678")
-  #   loab_b = user_b.loan_applications.create(amount: 50_000, down_payment: 10_000, interest: 2)
-  # end
+  before do
+    user_a = User.create(email: "userA@user.com", password: "12345678", password_confirmation: "12345678")
+    user_a.loan_applications.create(amount: 10_000, down_payment: 2_000, interest: 10)
+    user_b = User.create(email: "userB@user.com", password: "12345678", password_confirmation: "12345678")
+    loab_b = user_b.loan_applications.create(amount: 50_000, down_payment: 10_000, interest: 2)
+  end
 
-  # scenario "loans created from user A cannot be seen by user B" do
-  #   sign_in_with(user_a.email, user_a.password)
-  # end
+  scenario "loans created from user A cannot be seen by user B", js: true do
+    sign_in_with("userA@user.com", "12345678")
+
+    expect(page).to have_content("Amount: $10000")
+    expect(page).to have_content("Down Payment: $2000")
+    expect(page).to have_content("Interest: 10.0%")
+
+   # user A cannot see user B loan info
+    expect(page).to_not have_content("Amount: $50000")
+    expect(page).to_not have_content("Down Payment: $10000")
+    expect(page).to_not have_content("Interest: 2.0%")
+  end
 end
