@@ -3,7 +3,7 @@ class LoanApplication < ActiveRecord::Base
   has_attached_file :document
   validates_attachment :document, content_type: { content_type: "application/pdf" }
 
-  validates :amount, :down_payment, :interest, presence: true, numericality: { greater_than: 0 }
+  validates :amount, :down_payment, :interest, :user_id, presence: true, numericality: { greater_than: 0 }
 
   # generate pdf and update paperclip attachment
   def generate(pdf)
