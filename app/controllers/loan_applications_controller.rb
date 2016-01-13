@@ -34,16 +34,6 @@ class LoanApplicationsController < ApplicationController
       pdf = LoanApplicationPdf.new(@loan_app, view_context)  # add view_context to use Rails view helpers in pdf class
       @loan_app.generate(pdf)
     end
-
-    # this works without Ajax but combining the two creates incompatibility (will fix this sometime later)
-    # remember to set `config.action_view.embed_authenticity_token_in_remote_forms = true` in the application.rb in config folder to allow people with no JS (e.g. noscript in Firefox) to use form
-    #
-    # if @loan_app.save
-    #   # @loan_apps = current_user.loan_applications
-    #   redirect_to root_path
-    # else
-    #   render "new"
-    # end
   end
 
   private
