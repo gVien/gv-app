@@ -176,34 +176,37 @@ input {
 /*for more detail, see Devise docs
 https://github.com/plataformatec/devise/wiki/How-To:-Integrate-I18n-Flash-Messages-with-Devise-and-Bootstrap*/
 
+ @mixin type-align {
+    text-align: left;
+    list-style-type: none;
+ }
+
+
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
-    text-align: left;
-    list-style-type: none;
+    @include type-align;
  }
 
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
-    text-align: left;
-    list-style-type: none;
+    @include type-align;
  }
 
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
-    text-align: left;
-    list-style-type: none;
+    @include type-align;
  }
 
 .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
-    text-align: left;
-    list-style-type: none;
+    @include type-align;
  }
+
