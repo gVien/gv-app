@@ -92,3 +92,10 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
 end
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+
+  # replaces the WEBrick web server in production with puma
+  gem 'puma',           '2.15.3'
+end

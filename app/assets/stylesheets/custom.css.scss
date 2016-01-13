@@ -102,10 +102,34 @@ sup {
 
 /* Loan Applications */
 .loan-apps-listing {
-  .custom-color {
+  .loan-content {
+    margin-right: 25px;
+    margin-left: 25px;
     .loan-info {
       font-size: 1.2em;
+      margin-bottom: 10px;
+      position: relative;
+/*      .loan-attr {
+        position: absolute;
+        left: 0;
+      }*/
+      .loan-val {
+        position: absolute;
+        right: 0;
+      }
+/*      .pdf-link {
+        a.btn.btn-primary {
+          width: 100% !important;
+        }
+      }*/
     }
+  }
+}
+
+/* overwrite Bootstrap */
+.pdf-link {
+  a.btn.btn-primary {
+    width: 100%;
   }
 }
 
@@ -118,3 +142,71 @@ sup {
     display: none;
   }
 }
+
+/* forms */
+/*.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}*/
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  span {
+    margin-left: 10px;
+    font-weight: normal;
+  }
+}
+
+/* defining flash in devise */
+/*for more detail, see Devise docs
+https://github.com/plataformatec/devise/wiki/How-To:-Integrate-I18n-Flash-Messages-with-Devise-and-Bootstrap*/
+
+ @mixin type-align {
+    text-align: left;
+    list-style-type: none;
+ }
+
+
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    @include type-align;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    @include type-align;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    @include type-align;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    @include type-align;
+ }
+
