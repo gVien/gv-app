@@ -1,10 +1,10 @@
 $("ul.errors").html("") //clear the errors dialog in the modal
 <% if @loan_app.errors.any? %>
-  $("ul.errors").html("<p>You have <%= @loan_app.errors.count %> that prevent you from creating a new loan</p>")
+  $("ul.errors").html("<p>You have <%= pluralize(@loan_app.errors.count, 'error') %> that prevent you from creating a new loan</p>")
   <% @loan_app.errors.full_messages.each do |message| %>
     // `raw` can be used in placed of `html_safe` (raw uses html_safe behind the scence with `to_s` method)
     // it's used to render the html tags of message
-    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+    $("ul.errors").append($("<li class='alert alert-error'> </li>").html("<%= message.html_safe %>"))
   <% end %>
   $(".ajax-loader").addClass("hide")
 <% else %>  //if no errors found, render the index (root) of application & hide the modal
