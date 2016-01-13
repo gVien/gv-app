@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :loan_applications
+
+  validates :first_name, :last_name, presence: true, length: { maximum: 50 }
 end
