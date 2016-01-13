@@ -3,7 +3,6 @@ class LoanApplicationPdf < Prawn::Document
     super()
     @loan_app = loan_app
     @view = view  # to use the Rails view helpers
-    @full_name = "#{@loan_app.user.first_name.capitalize} #{@loan_app.user.last_name.capitalize}"
     complete_loan_letter
   end
 
@@ -17,9 +16,15 @@ class LoanApplicationPdf < Prawn::Document
     loan_thank_you
   end
 
+  def full_name
+    # In case some users previously created who didn't have first name or last name made
+    return "Customer" if @loan_app.user.first_name.nil? || @loan_app.user.last_name.nil?
+    "#{@loan_app.user.first_name.capitalize} #{@loan_app.user.last_name.capitalize}"
+  end
+
   def loan_intro
     text "Loan Document \##{@loan_app.id}\n", size: 25, style: :bold, color: "009BFF"
-    text "Dear #{@full_name},"
+    text "Dear #{full_name},"
     move_down 15
     text "Thank you for choosing Loanify as your loaning needs. Below is a summary of your loan information that you can save it for your record."
   end
