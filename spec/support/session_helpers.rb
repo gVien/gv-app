@@ -19,10 +19,14 @@ module SessionHelpers
   end
 
   def sign_up_user( options = {} )
+    first_name = options.fetch(:first_name, "gai")
+    last_name = options.fetch(:last_name, "v")
     email = options.fetch(:email, "new@user.com")   # or email || some_default_email
     password = options.fetch(:password, "12345678")
     password_confirmation = options.fetch(:password_confirmation, "12345678")
     visit new_user_registration_path
+    fill_in 'First name', with: first_name
+    fill_in 'Last name', with: last_name
     fill_in "Email", with: email
     fill_in "Password", with: password
     fill_in "Password confirmation", with: password_confirmation

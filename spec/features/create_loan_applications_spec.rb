@@ -51,9 +51,17 @@ RSpec.feature "CreateLoanApplications", type: :feature do
   # verify the loan app info is exists in User A page
   # verify the loan app info of User B is not on the page
   before do
-    user_a = User.create(email: "userA@user.com", password: "12345678", password_confirmation: "12345678")
+    user_a = User.create( first_name: "user",
+                          last_name: "A",
+                          email: "userA@user.com",
+                          password: "12345678",
+                          password_confirmation: "12345678" )
     user_a.loan_applications.create(amount: 10_000, down_payment: 2_000, interest: 10)
-    user_b = User.create(email: "userB@user.com", password: "12345678", password_confirmation: "12345678")
+    user_b = User.create( first_name: "user",
+                          last_name: "B",
+                          email: "userB@user.com",
+                          password: "12345678",
+                          password_confirmation: "12345678" )
     loab_b = user_b.loan_applications.create(amount: 50_000, down_payment: 10_000, interest: 2)
   end
 
