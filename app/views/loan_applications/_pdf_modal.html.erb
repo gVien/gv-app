@@ -11,7 +11,7 @@
       <div class="modal-body">
         <object data="<%= @loan_app.document.url %>" type="application/pdf" style="height:650px; width: 100%;">
             <embed src="<%= @loan_app.document.url %>" type="application/pdf" />
-            <p>It appears you do not have the PDF plugin for your browser, no problem! You can download your loan application, <%= link_to "here", loan_application_path(@loan_app, format: "pdf") %></p>
+            <p>It appears you do not have the PDF plugin for your browser, no problem! You can download your loan application, <%= link_to "here", @loan_app.document.url, target: "_blank" %>.</p>
         </object>
       </div>
       <div class="modal-footer">
