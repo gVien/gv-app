@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113225313) do
+ActiveRecord::Schema.define(version: 20160113234925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,11 @@ ActiveRecord::Schema.define(version: 20160113225313) do
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.string   "doc_id"
+    t.string   "slug"
   end
 
   add_index "loan_applications", ["doc_id"], name: "index_loan_applications_on_doc_id", unique: true, using: :btree
+  add_index "loan_applications", ["slug"], name: "index_loan_applications_on_slug", unique: true, using: :btree
   add_index "loan_applications", ["user_id"], name: "index_loan_applications_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
