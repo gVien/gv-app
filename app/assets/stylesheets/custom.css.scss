@@ -14,6 +14,16 @@ $green: #40B173;
 $light-blue: #009BFF;
 $dark-blue: darkblue;
 
+ @mixin type-align {
+    text-align: left;
+    list-style-type: none;
+ }
+
+@mixin notice-color {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
 /* universal */
 
 body {
@@ -100,12 +110,15 @@ sup {
   color: $dark-blue;
 }
 
-/* Loan Applications */
+/* Loan Applications #f5f5f5*/
 .loan-apps-listing {
   .loan-content {
     margin-right: 25px;
     margin-left: 25px;
     position: relative;
+    &:hover {
+      @include notice-color;
+    }
     .label {
       position: absolute;
       top: 0;
@@ -131,6 +144,7 @@ sup {
           width: 100% !important;
         }
       }*/
+
     }
   }
 }
@@ -185,12 +199,6 @@ input {
 /*for more detail, see Devise docs
 https://github.com/plataformatec/devise/wiki/How-To:-Integrate-I18n-Flash-Messages-with-Devise-and-Bootstrap*/
 
- @mixin type-align {
-    text-align: left;
-    list-style-type: none;
- }
-
-
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -213,8 +221,7 @@ https://github.com/plataformatec/devise/wiki/How-To:-Integrate-I18n-Flash-Messag
  }
 
 .alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
+    @include notice-color;
     color: #468847;
     @include type-align;
  }
