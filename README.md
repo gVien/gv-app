@@ -5,3 +5,4 @@ Built with:
 * Prawn for PDF generation
 * Paperclip to upload PDF to AWS S3
 * Rspec, Capybara, FactoryGirl, and Selenium for model, controller, and feature tests
+* Friendly_id for building friendly url (`states/california` instead of `states/31`)
