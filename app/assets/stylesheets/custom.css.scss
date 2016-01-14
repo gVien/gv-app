@@ -105,6 +105,15 @@ sup {
   .loan-content {
     margin-right: 25px;
     margin-left: 25px;
+    position: relative;
+    .label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      .badge {
+        background-color: $light-blue;
+      }
+    }
     .loan-info {
       font-size: 1.2em;
       margin-bottom: 10px;
@@ -128,7 +137,7 @@ sup {
 
 /* overwrite Bootstrap */
 .pdf-link {
-  a.btn.btn-primary {
+  a.btn.btn-success {
     width: 100%;
   }
 }

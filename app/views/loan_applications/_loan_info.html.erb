@@ -1,10 +1,11 @@
 <% unless @loan_apps.empty? %>
   <h3>Your Loan Application Lists</h3>
 <% end %>
-<% @loan_apps.each do |loan_app| %>
+<% @loan_apps.each_with_index do |loan_app, item_number| %>
   <div class="well well-lg col-md-3 loan-content">
+    <div class="label"><span class="badge"><%= item_number + 1 %></span></div>
     <div class="loan-info">
-      <span class="loan-attr"> Doc ID: </span> <span class="loan-val"><%= loan_app.id %></span>
+      <span class="loan-attr"> Doc ID: </span> <span class="loan-val"><%= loan_app.doc_id %></span>
     </div>
     <div class="loan-info">
       <span class="loan-attr">Amount: </span> <span class="loan-val">$<%= loan_app.amount %></span>
@@ -15,6 +16,6 @@
     <div class="loan-info">
       <span class="loan-attr">Interest: </span> <span class="loan-val"><%= loan_app.interest %>%</span>
     </div>
-    <div class="pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-primary", id: "loanpdf" %></div>
+    <div class="pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-success", id: "#{loan_app.doc_id}" %></div>
   </div>
 <% end %>

@@ -10,7 +10,7 @@ class LoanApplicationsController < ApplicationController
   end
 
   def show
-    @loan_app = current_user.loan_applications.find(params[:id])
+    @loan_app = current_user.loan_applications.friendly.find(params[:id])
   end
 
   def new

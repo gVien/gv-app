@@ -41,6 +41,9 @@ gem "paperclip", "~> 4.3"
 # gem to use with S3 storage
 gem 'aws-sdk', '~> 1.6'
 
+# friendly_id makes `/loan_applications/1` into a user friendly and user defined slug `/loan_applications/your-defined-slug`
+gem 'friendly_id', '~> 5.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
