@@ -2,6 +2,9 @@ class LoanApplication < ActiveRecord::Base
   belongs_to :user
   default_scope -> { order(created_at: :asc) } # order all loan app asc
 
+  extend FriendlyId
+  friendly_id :doc_id, use: :slugged
+
   has_attached_file :document
   validates_attachment :document, content_type: { content_type: "application/pdf" }
 
