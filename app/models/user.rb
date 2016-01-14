@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :loan_applications
+  has_many :loan_applications, dependent: :destroy
 
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
 end

@@ -47,4 +47,13 @@ RSpec.describe LoanApplication, type: :model do
       expect(loan).to_not be_valid
     end
   end
+
+  describe "loan_applications should be deleted if user is deleted" do
+    let(:loan) {FactoryGirl.create(:loan_application)}
+
+    it "loan should be nil when user is deleted" do
+      loan.user.destroy
+      expect(LoanApplication.find_by(id: loan.id)).to be_nil
+    end
+  end
 end
