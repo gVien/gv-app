@@ -23,7 +23,8 @@ class LoanApplicationPdf < Prawn::Document
   end
 
   def loan_intro
-    text "Loan Document \##{@loan_app.id}\n", size: 25, style: :bold, color: "009BFF"
+    text "Loan Document ID #{@loan_app.doc_id.upcase}", size: 15, style: :bold, color: "009BFF"
+    move_down 15
     text "Dear #{full_name},"
     move_down 15
     text "Thank you for choosing Loanify as your loaning needs. Below is a summary of your loan information that you can save it for your record."
@@ -43,7 +44,7 @@ class LoanApplicationPdf < Prawn::Document
 
   def loan_payment
     first_year_interest = (@loan_app.amount - @loan_app.down_payment) * @loan_app.interest / 100
-    text "Your payment for the first year is #{number_to_currency(first_year_interest)} or #{number_to_currency(first_year_interest.to_f / 12)} monthly."
+    text "Your payment for the first year is #{number_to_currency(first_year_interest)} or #{number_to_currency(first_year_interest.to_f / 12)} monthly. If you have more questions, please give us a call and reference the document ID #{@loan_app.doc_id.upcase}."
   end
 
   def loan_thank_you

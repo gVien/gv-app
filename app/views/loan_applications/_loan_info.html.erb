@@ -16,6 +16,6 @@
     <div class="loan-info">
       <span class="loan-attr">Interest: </span> <span class="loan-val"><%= loan_app.interest %>%</span>
     </div>
-    <div class="pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-primary", id: "#{loan_app.doc_id}" %></div>
+    <div class="pdf-link"><%= link_to "View PDF", loan_application_path(loan_app),  remote: true, class: "btn btn-success", id: "#{loan_app.doc_id}" %></div>
   </div>
 <% end %>
