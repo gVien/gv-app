@@ -5,7 +5,7 @@
   <div class="well well-lg col-md-3 loan-content">
     <div class="label"><span class="badge"><%= item_number + 1 %></span></div>
     <div class="loan-info">
-      <span class="loan-attr"> Doc ID: </span> <span class="loan-val"><%= loan_app.doc_id %></span>
+      <span class="loan-attr"> Doc ID: </span> <span class="loan-val"><%= show_doc_id(loan_app) %></span>
     </div>
     <div class="loan-info">
       <span class="loan-attr">Amount: </span> <span class="loan-val">$<%= loan_app.amount %></span>
